@@ -17,6 +17,7 @@ public class FakePersonDataAccessService implements PersonDAO {
     //List of Persons
     private static List<Person> DB = new ArrayList<>();
 
+    //Following methods are implemented from the PersonDAO
     @Override
     public int insertPerson(UUID id, Person person) {
         DB.add(new Person(id, person.getName()));//Adding new person to the database
@@ -30,11 +31,13 @@ public class FakePersonDataAccessService implements PersonDAO {
 
     @Override
     public Optional<Person> selectPersonById(UUID id) {
-        return DB.stream()
+        return DB.stream()//using java streams to push the data
                 .filter(person -> person.getId().equals(id))
                 .findFirst();
     }
 
+    //To delete, first need to get person by id
+    //if person exists then remove from DB
     @Override
     public int deletePersonById(UUID id) {
         Optional<Person>personMaybe = selectPersonById(id);
@@ -45,6 +48,7 @@ public class FakePersonDataAccessService implements PersonDAO {
         return 1;
     }
 
+    //Update person using Java streams
     @Override
     public int updatePersonById(UUID id, Person update) {
         return selectPersonById(id)

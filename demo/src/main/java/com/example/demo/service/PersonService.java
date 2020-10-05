@@ -19,10 +19,11 @@ public class PersonService {
     //Injecting into the actual constructor
     //Use Qualifier to differentiate
     @Autowired
-    public PersonService(@Qualifier("fakeDAO") PersonDAO personDAO){
+    public PersonService(@Qualifier("postgres") PersonDAO personDAO){
         this.personDAO = personDAO;
     }
 
+    //Implementing the services available
     public int addPerson(Person person){
         return personDAO.insertPerson(person);
     }
@@ -35,6 +36,7 @@ public class PersonService {
         return personDAO.selectPersonById(id);
     }
 
+    //calling the personDAO methods
     public int deletePerson(UUID id){
         return personDAO.deletePersonById(id);
     }

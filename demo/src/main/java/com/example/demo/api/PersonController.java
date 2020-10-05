@@ -40,6 +40,7 @@ public class PersonController {
                 .orElse(null);
     }
 
+    //exposing the Person Services to an API
     @DeleteMapping(path = "{id}")
     public void deletePersonById(@PathVariable("id") UUID id){
         personService.deletePerson(id);
@@ -49,5 +50,4 @@ public class PersonController {
     public void updatePerson(@PathVariable("id") UUID id, @Valid @NotNull @RequestBody Person personToUpdate){
         personService.updatePerson(id, personToUpdate);
     }
-
 }
