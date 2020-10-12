@@ -1,16 +1,21 @@
 package com.course.amigoscourse.dao;
 
 import com.course.amigoscourse.model.Student;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 //Methods from Interface Auto implemented
+@Repository("fakeDAO") //creates an instance of this class to be able to inject data into it, () lets you distinguish between them
 public class FakeStudentDaoImpl implements studentdao {
 
     private final Map<UUID, Student> database;
 
     public FakeStudentDaoImpl() {
         database = new HashMap<>();
+        //manually inputting a student
+        UUID studentId = UUID.randomUUID();
+        database.put(studentId, new Student(studentId,"Alex","Montana", "Computer Science", 23));
     }
 
     @Override
