@@ -18,6 +18,7 @@ public class PersonService {
 
     //Injecting into the actual constructor
     //Use Qualifier to differentiate
+    //to simply change the data source from postgres to local just change the qualifier
     @Autowired
     public PersonService(@Qualifier("postgres") PersonDAO personDAO){
         this.personDAO = personDAO;

@@ -48,9 +48,7 @@ public class PersonDataAccessService implements PersonDAO {
 
     @Override
     public int deletePersonById(UUID id) {
-        final String sql = "DELETE FROM students WHERE id = ?";
-        return jdbcTemplate.update(sql,id);
-        //return 0;
+        return 0;
     }
 
     @Override
